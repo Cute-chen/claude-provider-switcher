@@ -1,172 +1,172 @@
-# Claude Code Provider Switcher
+# Claude Code 提供商切换工具
 
-A macOS GUI application for managing and switching between different API providers for Claude Code CLI tool.
+一个 macOS GUI 应用程序，用于管理和切换 Claude Code CLI 工具的不同 API 提供商。
 
-## Overview
+## 项目概述
 
-This application provides a user-friendly interface to easily switch between different API providers for Claude Code, including third-party Claude API providers and DeepSeek. It automatically manages your shell configuration files with proper backup mechanisms.
+本应用程序提供了一个用户友好的界面，可以轻松在 Claude Code 的不同 API 提供商之间切换，包括第三方 Claude API 提供商和 DeepSeek。它会自动管理您的 shell 配置文件，并提供完善的备份机制。
 
-## Features
+## 主要功能
 
-- **Provider Management**: Configure and switch between multiple API providers
-- **Secure Configuration**: Safely store API keys and provider settings
-- **Automatic Backup**: Creates backups of your `.zshrc` file before any modifications
-- **Modern UI**: Clean, iOS-inspired interface with tabbed navigation
-- **Status Monitoring**: Real-time display of current active provider
-- **Multiple Build Options**: Support for py2app and PyInstaller builds
+- **提供商管理**：配置和切换多个 API 提供商
+- **安全配置**：安全存储 API 密钥和提供商设置
+- **自动备份**：在修改前自动备份您的 `.zshrc` 文件
+- **现代界面**：简洁的 iOS 风格界面，支持标签页导航
+- **状态监控**：实时显示当前激活的提供商
+- **多种构建方式**：支持 py2app 和 PyInstaller 构建
 
-## Supported Providers
+## 支持的提供商
 
-### Third-party Claude API
-- Customizable base URL and API key
-- Flexible configuration for any Claude-compatible API provider
+### 第三方 Claude API
+- 可自定义的基础 URL 和 API 密钥
+- 灵活的配置，支持任何 Claude 兼容的 API 提供商
 
 ### DeepSeek
-- Pre-configured DeepSeek API endpoint
-- Optimized environment variables for DeepSeek integration
-- Automatic model configuration
+- 预配置的 DeepSeek API 端点
+- 优化的环境变量配置
+- 自动模型配置
 
-## Installation
+## 安装方法
 
-### Method 1: Direct Execution
+### 方法一：直接运行
 ```bash
-# Clone the repository
-git clone <repository-url>
+# 克隆仓库
+git clone <仓库地址>
 cd "claude code模型商切换"
 
-# Run the application
+# 运行应用程序
 ./run.sh
 ```
 
-### Method 2: Build macOS Application Bundle
+### 方法二：构建 macOS 应用程序包
 ```bash
-# Build using py2app
+# 使用 py2app 构建
 ./build.sh
 
-# The application will be created in dist/Claude Provider Switcher.app
+# 应用程序将创建在 dist/Claude Provider Switcher.app
 ```
 
-### Method 3: Build with PyInstaller
+### 方法三：使用 PyInstaller 构建
 ```bash
-# Build using PyInstaller
+# 使用 PyInstaller 构建
 ./build_pyinstaller.sh
 ```
 
-## Usage
+## 使用说明
 
-1. **Launch the Application**: Run the application using any of the installation methods above
+1. **启动应用程序**：使用上述任一安装方法运行应用程序
 
-2. **Configure Providers**:
-   - Go to the "第三方 Claude" tab to configure third-party provider settings
-   - Go to the "DeepSeek" tab to configure DeepSeek API key
-   - Click "保存配置" to save your settings
+2. **配置提供商**：
+   - 前往"第三方 Claude"标签页配置第三方提供商设置
+   - 前往"DeepSeek"标签页配置 DeepSeek API 密钥
+   - 点击"保存配置"保存您的设置
 
-3. **Switch Providers**:
-   - Click "切换到此提供商" to switch to your desired provider
-   - The application will automatically update your `.zshrc` file
+3. **切换提供商**：
+   - 点击"切换到此提供商"切换到您想要的提供商
+   - 应用程序会自动更新您的 `.zshrc` 文件
 
-4. **Apply Changes**:
-   - After switching, restart your terminal or run:
+4. **应用更改**：
+   - 切换后，重启终端或运行：
    ```bash
    source ~/.zshrc
    ```
 
-## Configuration
+## 配置文件
 
-The application stores configuration in `~/.claude_provider_config.json`:
+应用程序将配置存储在 `~/.claude_provider_config.json`：
 
 ```json
 {
   "third_party": {
     "base_url": "https://api.aicodemirror.com/api/claudecode",
-    "api_key": "your-api-key-here"
+    "api_key": "您的-api-密钥"
   },
   "deepseek": {
-    "api_key": "your-deepseek-api-key-here"
+    "api_key": "您的-deepseek-api-密钥"
   }
 }
 ```
 
-## File Structure
+## 文件结构
 
 ```
-├── claude_switcher_app.py     # Main modern UI application
-├── claude_provider_switcher.py # Advanced UI with JSON editor
-├── setup.py                   # py2app configuration
-├── build.sh                   # Build script for py2app
-├── build_pyinstaller.sh       # Build script for PyInstaller
-├── run.sh                     # Direct execution script
-├── build/                     # Build artifacts
-└── dist/                      # Distribution directory
+├── claude_switcher_app.py     # 主要现代 UI 应用程序
+├── claude_provider_switcher.py # 高级 UI，包含 JSON 编辑器
+├── setup.py                   # py2app 配置文件
+├── build.sh                   # py2app 构建脚本
+├── build_pyinstaller.sh       # PyInstaller 构建脚本
+├── run.sh                     # 直接运行脚本
+├── build/                     # 构建产物
+└── dist/                      # 分发目录
 ```
 
-## Requirements
+## 系统要求
 
-- **Python 3** (included with macOS)
-- **Tkinter** (included with macOS Python)
-- **zsh shell** (default on modern macOS)
+- **Python 3**（macOS 自带）
+- **Tkinter**（macOS Python 自带）
+- **zsh shell**（现代 macOS 默认）
 
-### Build Dependencies
-- **py2app** (for macOS app bundle)
-- **PyInstaller** (for standalone executable)
+### 构建依赖
+- **py2app**（用于构建 macOS 应用程序包）
+- **PyInstaller**（用于构建独立可执行文件）
 
-## Security
+## 安全性
 
-- **No Network Access**: The application does not make any network requests
-- **Local Storage Only**: All configuration is stored locally in your home directory
-- **Backup Protection**: Automatic backups of `.zshrc` before any modifications
-- **Secure Input**: API keys are masked in the UI
+- **无网络访问**：应用程序不会进行任何网络请求
+- **本地存储**：所有配置都存储在您的本地主目录中
+- **备份保护**：在修改前自动备份 `.zshrc`
+- **安全输入**：UI 中 API 密钥会被屏蔽显示
 
-## Technical Details
+## 技术细节
 
-### How It Works
-1. Reads and modifies your `~/.zshrc` file
-2. Creates a dedicated section for Claude Code environment variables
-3. Automatically backs up your `.zshrc` before making changes
-4. Stores provider configurations in `~/.claude_provider_config.json`
+### 工作原理
+1. 读取并修改您的 `~/.zshrc` 文件
+2. 为 Claude Code 环境变量创建专用区域
+3. 在更改前自动备份您的 `.zshrc`
+4. 将提供商配置存储在 `~/.claude_provider_config.json`
 
-### Environment Variables Managed
+### 管理的环境变量
 - `ANTHROPIC_BASE_URL`
 - `ANTHROPIC_API_KEY`
 - `DEEPSEEK_API_KEY`
 - `ANTHROPIC_AUTH_TOKEN`
 - `ANTHROPIC_MODEL`
-- And other Claude Code specific variables
+- 以及其他 Claude Code 特定变量
 
-## Troubleshooting
+## 故障排除
 
-### Common Issues
+### 常见问题
 
-**"无法读取 .zshrc 文件" (Cannot read .zshrc file)**
-- Ensure you have a `.zshrc` file in your home directory
-- Check file permissions
+**"无法读取 .zshrc 文件"**
+- 确保您的主目录中有 `.zshrc` 文件
+- 检查文件权限
 
-**Changes not taking effect**
-- Remember to run `source ~/.zshrc` after switching providers
-- Restart your terminal application
+**更改未生效**
+- 切换提供商后记得运行 `source ~/.zshrc`
+- 重启终端应用程序
 
-**Application won't start**
-- Ensure Python 3 is installed: `python3 --version`
-- Check that Tkinter is available: `python3 -m tkinter`
+**应用程序无法启动**
+- 确保 Python 3 已安装：`python3 --version`
+- 检查 Tkinter 是否可用：`python3 -m tkinter`
 
-### Backup Files
-Backup files are stored in `~/.claude_provider_backups/` with timestamps:
+### 备份文件
+备份文件存储在 `~/.claude_provider_backups/` 目录中，包含时间戳：
 ```
 ~/.claude_provider_backups/zshrc_backup_20250101_120000
 ```
 
-## Contributing
+## 贡献
 
-Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
+欢迎贡献！请随时提交 pull request 或为 bug 和功能请求开启 issue。
 
-## License
+## 许可证
 
-This project is open source. See the LICENSE file for details.
+本项目是开源的。详情请参阅 LICENSE 文件。
 
-## Disclaimer
+## 免责声明
 
-This tool is designed to help manage Claude Code API provider configurations. It modifies your shell configuration files, so please review the code and understand what it does before using it. Always ensure you have proper backups of important configuration files.
+此工具旨在帮助管理 Claude Code API 提供商配置。它会修改您的 shell 配置文件，因此在使用前请查看代码并了解其功能。始终确保您有重要配置文件的适当备份。
 
 ---
 
-**Note**: This application is specifically designed for macOS users with zsh shell. It may not work properly on other operating systems or with different shells.
+**注意**：此应用程序专门为使用 zsh shell 的 macOS 用户设计。在其他操作系统或使用不同 shell 时可能无法正常工作。
